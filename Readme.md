@@ -3,17 +3,18 @@
 	* install [Visual Studio Code](https://code.visualstudio.com/)
 	* install [nodejs](https://nodejs.org/en/)
 	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
-	* in project folder: `npm install`
+	* in project folder: `npm install` (for "tsc")
 * Serving
     * Option 1 - local web server
         * `npm start`
         * open browser to: "http://localhost:8080", enable "live page"
-    * Option 2 - open files locally
+    * Option 2 - Chrome - open files locally
         * set flag "--allow-file-access-from-files" for Chrome
         * open index.html in browser, enable "live page"
     * Option 3 - Firefox - open files locally
         * open "about:config"
         * set "security.fileuri.strict_origin_policy" to "false"
+        * no good "live page" alternative for firefox
 * Editing
 	* open project folder in Visual Studio Code
 	* Run "build task" once (on Mac: Command-Shift-B)
@@ -28,18 +29,12 @@
 	* scale
 * Background Image
 * Primitives
-	* Phaser.Circle
-	* Phaser.Line (line.fromSprite)
-	* Phaser.Point
-	* Phaser.Polygon
-	* Phaser.Rectangle
-	* Advanced graphics (drawCircle, lineTo, drawRect)
+	* Graphics (drawCircle, lineTo, drawRect)
 		* beginFill, endFill?
 * Play a sound
 * Basic Input
 	* dragging (enableDrag)
 	* click (inputEnabled, events.onInputDown)
-	* follow input (physics.arcade.moveToPointer)
 * Constant movement
 	* rotation
 	* translation
