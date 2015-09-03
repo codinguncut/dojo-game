@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "out": "root/js/game.js",
+        "watch": true
+    },
+    "files": [
+        "root/Main.ts"
+    ]
+}
