@@ -4,10 +4,16 @@
 	* install [nodejs](https://nodejs.org/en/)
 	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
 	* in project folder: `npm install`
-	* install typescript `npm install -g tsc`
-* Web Server
-	* `npm start`
-	* open browser to: "http://localhost:8080", enable "live page"
+* Serving
+    * Option 1 - local web server
+        * `npm start`
+        * open browser to: "http://localhost:8080", enable "live page"
+    * Option 2 - open files locally
+        * set flag "--allow-file-access-from-files" for Chrome
+        * open index.html in browser, enable "live page"
+    * Option 3 - Firefox - open files locally
+        * open "about:config"
+        * set "security.fileuri.strict_origin_policy" to "false"
 * Editing
 	* open project folder in Visual Studio Code
 	* Run "build task" once (on Mac: Command-Shift-B)
@@ -85,3 +91,4 @@
 * integrate web server into VSCode (either via `npm start` or a `gulp watch serve`)
 * scale canvas to screen
 * create git snapshots for incremental tasks
+* consider "npm livereload" instead of "chrome live page"

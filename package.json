@@ -2,15 +2,16 @@
   "name": "dojo-game",
   "version": "1.0.0",
   "description": "",
+  "repository": "https://github.com/codinguncut/dojo-game",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/http-server/bin/http-server root"
+    "start": "node_modules/.bin/http-server root"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "cfenv": "^1.0.0",
-    "express": "^4.13.3"
+    "http-server": "^0.8.0",
+    "tsc": "^1.20150623.0"
   }
 }
