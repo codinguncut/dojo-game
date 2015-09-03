@@ -8,5 +8,9 @@
     "start": "node_modules/http-server/bin/http-server root"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cfenv": "^1.0.0",
+    "express": "^4.13.3"
+  }
 }

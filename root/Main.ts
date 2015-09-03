@@ -2,6 +2,8 @@
 
 class Game extends Phaser.Game {
     constructor() {
+        // width 800, height 600, render into DOM element "phaser-example", null for preload/create/update functions
+        // TODO: scale canvas to browser size
         super(800, 600, Phaser.AUTO, "phaser-example", null);
         this.state.add("play", new PlayState());
         this.state.start("play");
@@ -14,12 +16,14 @@ class PlayState extends Phaser.State {
     player: Phaser.Sprite;
     music: Phaser.Sound;
     
+    // preload required assets before starting the game
     preload() {
         this.load.image("player", "assets/sprites/beginners_jumperpack/PNG/Players/bunny1_stand.png");
         this.load.image("background", "assets/sprites/backgroundelements/PNG/castle_beige.png")
         this.load.audio("music", "assets/music/ehlers/Twists.mp3")
     }
     
+    // initialize the world and create initial elements
     create() {
         // enable running when browser is not focussed
         this.game.stage.disableVisibilityChange = true;
@@ -41,6 +45,7 @@ class PlayState extends Phaser.State {
         //this.player.input.enableDrag();
     }
     
+    // called before each rendering frame
     update() {
         //this.player.angle += 1;
         

@@ -7,6 +7,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Game = (function (_super) {
     __extends(Game, _super);
     function Game() {
+        // width 800, height 600, render into DOM element "phaser-example", null for preload/create/update functions
+        // TODO: scale canvas to browser size
         _super.call(this, 800, 600, Phaser.AUTO, "phaser-example", null);
         this.state.add("play", new PlayState());
         this.state.start("play");
@@ -18,11 +20,13 @@ var PlayState = (function (_super) {
     function PlayState() {
         _super.apply(this, arguments);
     }
+    // preload required assets before starting the game
     PlayState.prototype.preload = function () {
         this.load.image("player", "assets/sprites/beginners_jumperpack/PNG/Players/bunny1_stand.png");
         this.load.image("background", "assets/sprites/backgroundelements/PNG/castle_beige.png");
         this.load.audio("music", "assets/music/ehlers/Twists.mp3");
     };
+    // initialize the world and create initial elements
     PlayState.prototype.create = function () {
         // enable running when browser is not focussed
         this.game.stage.disableVisibilityChange = true;
@@ -38,6 +42,7 @@ var PlayState = (function (_super) {
         this.player.body.collideWorldBounds = true;
         //this.player.input.enableDrag();
     };
+    // called before each rendering frame
     PlayState.prototype.update = function () {
         //this.player.angle += 1;
         this.player.body.velocity.x = 0;

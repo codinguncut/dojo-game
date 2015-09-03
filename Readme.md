@@ -4,14 +4,83 @@
 	* install [nodejs](https://nodejs.org/en/)
 	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
 	* in project folder: `npm install`
+	* install typescript `npm install -g tsc`
 * Web Server
 	* `npm start`
 	* open browser to: "http://localhost:8080", enable "live page"
 * Editing
 	* open project folder in Visual Studio Code
-	* Run build task once (on Mac: Command-Shift-B)
+	* Run "build task" once (on Mac: Command-Shift-B)
 	* From then on build task will run automatically with each "Save" 
-	
+
+
+# "Easy" Activities
+* Display Text (add.text)
+	* font
+* Display Image/Sprite (add.image)
+	* angle
+	* scale
+* Background Image
+* Primitives
+	* Phaser.Circle
+	* Phaser.Line (line.fromSprite)
+	* Phaser.Point
+	* Phaser.Polygon
+	* Phaser.Rectangle
+	* Advanced graphics (drawCircle, lineTo, drawRect)
+		* beginFill, endFill?
+* Play a sound
+* Basic Input
+	* dragging (enableDrag)
+	* click (inputEnabled, events.onInputDown)
+	* follow input (physics.arcade.moveToPointer)
+* Constant movement
+	* rotation
+	* translation
+* Use existing sprite animation (load.atlas, load.atlasXML, add, play)
+* Spritesheet (load.spritesheet)
+
+
+## Advanced
+* Draw interactive polygon
+* Tweening
+* Advanced input
+	* keyboard events
+	* keyboard.addKeys (i.e. naming keys for actions)
+	* pointer click/tap events
+* Sprite anchor
+* Grouping
+* Button triggers event (add.button + callback)
+* Physics
+	* collisions handling
+	* bounce
+	* drag/friction
+	* immovable
+* Debug
+* Callbacks
+* Dynamically spawning objects
+* Tilemaps
+* Camera (follow, zoom, cull(?))
+* box2d
+* Timer
+
+
+# Phaser Resources
+* http://gamemechanicexplorer.com/
+* http://mightyfingers.com/
+* http://phaser.io/sandbox
+* https://koding.com/ has a dedicated phaser environment
+
+
+# Game Art Resources
+* kenney.nl/assets
+* open bundle cc0
+* opengameart.org
+* reddit link for free game art
+* spritelib
+* phaser-examples/assets/
+
+
 # TODO
 * integrate web server into VSCode (either via `npm start` or a `gulp watch serve`)
 * scale canvas to screen

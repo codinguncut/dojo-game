@@ -1,0 +1,8 @@
+applications:
+- name: coder-dojo
+  memory: 256M
+  instances: 1
+  host: coder-dojo
+  command: node server.js
+  services:
+    - Mbe_logdrain
