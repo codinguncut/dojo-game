@@ -123,6 +123,11 @@ var InitState = (function (_super) {
         this.game.stage.disableVisibilityChange = true;
         // start arcade physics system 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        // source: www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
+        // myAsset.scale.setTo(scaleRatio, scaleRatio);
+        var scaleRatio = 1 / window.devicePixelRatio;
+        this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+        this.scale.setUserScale(scaleRatio, scaleRatio);
         this.drawCoords();
         // start PlayState
         this.game.state.start("play", false /* clearWorld */);
@@ -181,16 +186,13 @@ var InitState = (function (_super) {
 /// <reference path="lib/phaser.d.ts" />
 /// <reference path="PlayState.ts" />
 /// <reference path="InitState.ts" />
-// source: www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
-// myAsset.scale.setTo(scaleRatio, scaleRatio);
-var scaleRatio = window.devicePixelRatio / 3;
 var Game = (function (_super) {
     __extends(Game, _super);
     function Game() {
         // source: see above (joshmorony.com)
-        var width = window.innerWidth, height = window.innerHeight; // * window.devicePixelRatio;
+        var width = window.innerWidth * window.devicePixelRatio, height = window.innerHeight * window.devicePixelRatio;
         // Note: may need to set Phaser.CANVAS for mobile
-        _super.call(this, width, height, Phaser.CANVAS); //AUTO);
+        _super.call(this, width, height, Phaser.CANVAS, 'game'); //AUTO);
         this.state.add("init", new InitState());
         this.state.add("play", new PlayState());
         this.state.start("init");

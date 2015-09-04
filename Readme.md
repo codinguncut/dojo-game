@@ -9,6 +9,7 @@ The game is written in TypeScript to support better IDE support, but for all pra
 
 [Game Demo](http://codinguncut.github.io/dojo-game/) (assets need a moment to load)
 
+
 # Getting Started
 * Software
 	* install [Visual Studio Code](https://code.visualstudio.com/)
@@ -31,10 +32,12 @@ The game is written in TypeScript to support better IDE support, but for all pra
 		* you will see a little spinner in the bottom left corner
 		* From then on build task will run automatically with each "Save" 
 
+
 # MacOS, Linux
 * please run `npm install -g typescript http-server`
 * to run the local web server, run `http-server . -s -o`
 * open browser to "http://localhost:8080"
+
 
 # Getting images from the internet
 * for best results images need a transparent background
@@ -45,6 +48,11 @@ The game is written in TypeScript to support better IDE support, but for all pra
 	* Click on the image
 		* View image
 			* Right-click - "Save Image as"
+
+
+# Creating own content
+* take pictures in front of a greenscreen
+* draw figures on paper
 
 
 # "Easy" Activities
@@ -67,6 +75,7 @@ The game is written in TypeScript to support better IDE support, but for all pra
 * Grouping
 * Find/draw own sprite to add
 
+
 # Advanced Activities
 * Advanced input
 	* keyboard events
@@ -85,9 +94,6 @@ The game is written in TypeScript to support better IDE support, but for all pra
 * Camera (follow, zoom, cull(?))
 * Timer
 
-
-# Create own sprites
-* http://www.piskelapp.com/ (save as png)
 
 # License
 * Licensed under MIT license

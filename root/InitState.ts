@@ -10,6 +10,13 @@ class InitState extends Phaser.State {
         // start arcade physics system 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+        // source: www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
+        // myAsset.scale.setTo(scaleRatio, scaleRatio);
+        var scaleRatio = 1 / window.devicePixelRatio;
+
+        this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+        this.scale.setUserScale(scaleRatio, scaleRatio);
+
         this.drawCoords();
     
         // start PlayState
