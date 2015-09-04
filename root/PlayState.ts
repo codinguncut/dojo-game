@@ -70,7 +70,8 @@ class PlayState extends Phaser.State {
     addPlayer() {
         // add player sprite to game 
         this.player = this.add.sprite(450, 50, 'player');
-        
+
+        /*        
         // enable physics for player
         this.game.physics.arcade.enableBody(this.player);
         // player will stop moving at screen boundary        
@@ -80,6 +81,7 @@ class PlayState extends Phaser.State {
         this.player.body.gravity.set(0, 900);
         this.player.body.drag.set(300); 
         this.player.body.bounce.set(0.8);
+
 
         // enable mouse interaction with sprite
         this.player.inputEnabled = true;
@@ -92,6 +94,7 @@ class PlayState extends Phaser.State {
             this.player.kill();
             // play sound?
         });
+        */
     }
     
     addEnemies() {
