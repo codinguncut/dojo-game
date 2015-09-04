@@ -41,11 +41,13 @@ class PlayState extends Phaser.State {
 
     /* set player gravity based on device orientation */    
     handleOrientation(e) {
-        var x = e.gamma / 90.0; // gamma is (-90, 90)
-        var y = e.beta / 90.0;  // beta is (-90, 90), when not upside-down
-        var mag = Math.sqrt(x*x + y*y);
-        var g = 900 / mag;
-        this.player.body.gravity.set(x*g, y*g);
+        if (e.gamma != null) {
+            var x = e.gamma / 90.0; // gamma is (-90, 90)
+            var y = e.beta / 90.0;  // beta is (-90, 90), when not upside-down
+            var mag = Math.sqrt(x*x + y*y);
+            var g = 900 / mag;
+            this.player.body.gravity.set(x*g, y*g);
+        }
     }
 
     createButton() {
