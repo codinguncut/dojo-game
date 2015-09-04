@@ -9,18 +9,20 @@ var PlayState = (function (_super) {
     function PlayState() {
         _super.apply(this, arguments);
     }
-    // preload required assets before starting the game
+    /* preload required assets before starting the game */
     PlayState.prototype.preload = function () {
         this.load.image("player", "root/assets/bunny.png");
         this.load.image("platform", "root/assets/platform.png");
         this.load.audio("music", "root/assets/Twists.mp3");
+        this.game.load.atlasXML('jumper', 'root/assets/spritesheet_jumper.png', 'root/assets/spritesheet_jumper.xml');
     };
     /* initialize the world and create initial elements */
     PlayState.prototype.create = function () {
         // NOTE: order of sprites added is relevant
         //this.playMusic();
-        this.addPlatform();
+        this.buildLevel();
         this.addPlayer();
+        this.addEnemies();
         //this.createButton();
         //this.addText();
     };
@@ -43,17 +45,17 @@ var PlayState = (function (_super) {
         music.play();
     };
     /* add a platform */
-    PlayState.prototype.addPlatform = function () {
-        this.platform = this.add.sprite(200, 300, "platform");
-        this.platform.scale.setTo(1, 1);
-        this.game.physics.arcade.enableBody(this.platform);
-        this.platform.body.immovable = true;
+    PlayState.prototype.buildLevel = function () {
+        this.platforms = this.add.group();
+        var platform = this.platforms.create(200, 300, "platform");
+        this.game.physics.arcade.enableBody(platform);
+        platform.body.immovable = true;
     };
     /* add the player sprite to the game, and enable physics on it */
     PlayState.prototype.addPlayer = function () {
         var _this = this;
         // add player sprite to game 
-        this.player = this.add.sprite(400, 50, 'player');
+        this.player = this.add.sprite(450, 50, 'player');
         // enable physics for player
         this.game.physics.arcade.enableBody(this.player);
         // player will stop moving at screen boundary        
@@ -72,10 +74,24 @@ var PlayState = (function (_super) {
             // play sound?
         });
     };
+    PlayState.prototype.addEnemies = function () {
+        this.enemies = this.add.group();
+        var wingman = this.enemies.create(330, 100, 'jumper');
+        // set anchor to middle of sprite
+        wingman.anchor.set(.5, .5);
+        // enable physics for player
+        this.game.physics.arcade.enableBody(wingman);
+        wingman.body.collideWorldBounds = true;
+        wingman.body.bounce.set(0.8);
+        wingman.body.drag.set(100);
+        wingman.animations.add('flap', [110, 111, 112, 113, 114], 10 /*fps*/, true /*loop*/);
+        wingman.animations.play('flap');
+    };
     /* called before each rendering frame */
     PlayState.prototype.update = function () {
         this.playerSteer();
-        this.game.physics.arcade.collide(this.player, this.platform);
+        this.game.physics.arcade.collide(this.player, this.platforms);
+        this.game.physics.arcade.collide(this.player, this.enemies);
     };
     /* if curser keys are pressed, accelerate the player */
     PlayState.prototype.playerSteer = function () {
@@ -90,9 +106,6 @@ var PlayState = (function (_super) {
         if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             this.player.body.acceleration.x = 900;
         }
-    };
-    /* useful for debug information */
-    PlayState.prototype.render = function () {
     };
     return PlayState;
 })(Phaser.State);

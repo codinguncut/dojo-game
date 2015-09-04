@@ -2,14 +2,18 @@
 
 class PlayState extends Phaser.State {
     // need type annotation for autocomplete
-    player:     Phaser.Sprite;
-    platform:   Phaser.Sprite; // TODO: should be group
+    player: Phaser.Sprite;
+    enemies: Phaser.Group;
+    platforms:  Phaser.Group; 
     
-    // preload required assets before starting the game
+    /* preload required assets before starting the game */
     preload() {
         this.load.image("player", "root/assets/bunny.png");
-        this.load.image("platform", "root/assets/platform.png")
-        this.load.audio("music", "root/assets/Twists.mp3")
+        this.load.image("platform", "root/assets/platform.png");
+        this.load.audio("music", "root/assets/Twists.mp3");
+        this.game.load.atlasXML('jumper', 
+            'root/assets/spritesheet_jumper.png', 
+            'root/assets/spritesheet_jumper.xml');
     }
     
     /* initialize the world and create initial elements */
@@ -18,9 +22,11 @@ class PlayState extends Phaser.State {
 
         //this.playMusic();
         
-        this.addPlatform();
+        this.buildLevel();
 
         this.addPlayer();
+        
+        this.addEnemies();
 
         //this.createButton();
 
@@ -49,18 +55,18 @@ class PlayState extends Phaser.State {
     }
 
     /* add a platform */
-    addPlatform() {
-        this.platform = this.add.sprite(200, 300, "platform");
-        this.platform.scale.setTo(1, 1);
-
-        this.game.physics.arcade.enableBody(this.platform);
-        this.platform.body.immovable = true;
+    buildLevel() {
+        this.platforms = this.add.group();
+        
+        var platform = this.platforms.create(200, 300, "platform");
+        this.game.physics.arcade.enableBody(platform);
+        platform.body.immovable = true;
     }
 
     /* add the player sprite to the game, and enable physics on it */
     addPlayer() {
         // add player sprite to game 
-        this.player = this.add.sprite(400, 50, 'player');
+        this.player = this.add.sprite(450, 50, 'player');
         
         // enable physics for player
         this.game.physics.arcade.enableBody(this.player);
@@ -85,11 +91,30 @@ class PlayState extends Phaser.State {
         });
     }
     
+    addEnemies() {
+        this.enemies = this.add.group();
+        
+        var wingman = this.enemies.create(330, 100, 'jumper');
+        // set anchor to middle of sprite
+        wingman.anchor.set(.5, .5);
+
+        
+        // enable physics for player
+        this.game.physics.arcade.enableBody(wingman);
+        wingman.body.collideWorldBounds = true;
+        wingman.body.bounce.set(0.8);
+        wingman.body.drag.set(100);
+        
+        wingman.animations.add('flap', [110, 111, 112, 113, 114], 10 /*fps*/, true /*loop*/);
+        wingman.animations.play('flap');
+    }
+    
     /* called before each rendering frame */
     update() {
         this.playerSteer();        
 
-        this.game.physics.arcade.collide(this.player, this.platform);
+        this.game.physics.arcade.collide(this.player, this.platforms);
+        this.game.physics.arcade.collide(this.player, this.enemies);
     }
 
     /* if curser keys are pressed, accelerate the player */    
@@ -105,10 +130,6 @@ class PlayState extends Phaser.State {
         if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             this.player.body.acceleration.x = 900;
         }
-    }
-    
-    /* useful for debug information */
-    render() {
     }
 }
 
