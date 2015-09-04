@@ -23,6 +23,7 @@
 # MacOS, Linux
 * please run `npm install -g typescript http-server`
 * to run the local web server, run `npm start`
+* open browser to "http://localhost:8080"
 
 # Getting images from the internet
 * for best results images need a transparent background
