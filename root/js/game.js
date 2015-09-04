@@ -22,7 +22,7 @@ var PlayState = (function (_super) {
         //this.playMusic();
         this.buildLevel();
         this.addPlayer();
-        //this.addEnemies();
+        this.addEnemies();
         //this.createButton();
         //this.addText();
     };
