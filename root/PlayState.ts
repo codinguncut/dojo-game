@@ -116,8 +116,8 @@ class PlayState extends Phaser.State {
     
     /* called before each rendering frame */
     update() {
-        /*
         this.playerSteer();        
+        /*
 
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);

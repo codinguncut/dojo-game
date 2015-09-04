@@ -95,8 +95,8 @@ var PlayState = (function (_super) {
     };
     /* called before each rendering frame */
     PlayState.prototype.update = function () {
-        /*
         this.playerSteer();
+        /*
 
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
