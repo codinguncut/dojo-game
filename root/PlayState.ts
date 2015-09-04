@@ -58,7 +58,8 @@ class PlayState extends Phaser.State {
     buildLevel() {
         this.platforms = this.add.group();
         
-        var platform = this.platforms.create(200, 300, "platform");
+        var platform : Phaser.Sprite;
+        platform = this.platforms.create(200, 300, "platform");
         this.game.physics.arcade.enableBody(platform);
         platform.body.immovable = true;
     }
@@ -94,7 +95,8 @@ class PlayState extends Phaser.State {
     addEnemies() {
         this.enemies = this.add.group();
         
-        var wingman = this.enemies.create(330, 100, 'jumper');
+        var wingman : Phaser.Sprite;
+        wingman = this.enemies.create(330, 100, 'jumper');
         // set anchor to middle of sprite
         wingman.anchor.set(.5, .5);
 
