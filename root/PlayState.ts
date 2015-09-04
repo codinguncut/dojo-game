@@ -9,8 +9,8 @@ class PlayState extends Phaser.State {
     /* preload required assets before starting the game */
     preload() {
         this.load.image("player", "root/assets/bunny.png");
-        /*
         this.load.image("platform", "root/assets/platform.png");
+        /*
         //this.load.audio("music", "root/assets/Twists.mp3");
         this.game.load.atlasXML('jumper', 
             'root/assets/spritesheet_jumper.png', 
@@ -24,7 +24,7 @@ class PlayState extends Phaser.State {
 
         //this.playMusic();
         
-        //this.buildLevel();
+        this.buildLevel();
 
         this.addPlayer();
         
@@ -70,8 +70,7 @@ class PlayState extends Phaser.State {
     addPlayer() {
         // add player sprite to game 
         this.player = this.add.sprite(450, 50, 'player');
-
-        /*        
+        
         // enable physics for player
         this.game.physics.arcade.enableBody(this.player);
         // player will stop moving at screen boundary        
@@ -94,7 +93,6 @@ class PlayState extends Phaser.State {
             this.player.kill();
             // play sound?
         });
-        */
     }
     
     addEnemies() {

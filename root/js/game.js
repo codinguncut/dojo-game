@@ -12,8 +12,8 @@ var PlayState = (function (_super) {
     /* preload required assets before starting the game */
     PlayState.prototype.preload = function () {
         this.load.image("player", "root/assets/bunny.png");
-        /*
         this.load.image("platform", "root/assets/platform.png");
+        /*
         //this.load.audio("music", "root/assets/Twists.mp3");
         this.game.load.atlasXML('jumper',
             'root/assets/spritesheet_jumper.png',
@@ -24,7 +24,7 @@ var PlayState = (function (_super) {
     PlayState.prototype.create = function () {
         // NOTE: order of sprites added is relevant
         //this.playMusic();
-        //this.buildLevel();
+        this.buildLevel();
         this.addPlayer();
         //this.addEnemies();
         //this.createButton();
@@ -58,32 +58,26 @@ var PlayState = (function (_super) {
     };
     /* add the player sprite to the game, and enable physics on it */
     PlayState.prototype.addPlayer = function () {
+        var _this = this;
         // add player sprite to game 
         this.player = this.add.sprite(450, 50, 'player');
-        /*
         // enable physics for player
         this.game.physics.arcade.enableBody(this.player);
-        // player will stop moving at screen boundary
+        // player will stop moving at screen boundary        
         this.player.body.collideWorldBounds = true;
-
         // pixels/second/second
         this.player.body.gravity.set(0, 900);
         this.player.body.drag.set(300);
         this.player.body.bounce.set(0.8);
-
-
         // enable mouse interaction with sprite
         this.player.inputEnabled = true;
-        
         // drag doesn't work well with gravity
         //player.input.enableDrag(true);
-    
         // kill player when clicked on
-        this.player.events.onInputDown.add(() => {
-            this.player.kill();
+        this.player.events.onInputDown.add(function () {
+            _this.player.kill();
             // play sound?
         });
-        */
     };
     PlayState.prototype.addEnemies = function () {
         this.enemies = this.add.group();
