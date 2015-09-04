@@ -25,7 +25,7 @@ var PlayState = (function (_super) {
         this.buildLevel();
         this.addPlayer();
         this.addEnemies();
-        window.screen.lockOrientation("portrait");
+        // event listener for mobile devices
         window.addEventListener("deviceorientation", function (e) { return _this.handleOrientation(e); }, true);
         //this.createButton();
         //this.addText();

@@ -30,7 +30,7 @@ class PlayState extends Phaser.State {
         
         this.addEnemies();
         
-        window.screen.lockOrientation("portrait");
+        // event listener for mobile devices
         window.addEventListener("deviceorientation", 
             (e) => this.handleOrientation(e), true);
 
