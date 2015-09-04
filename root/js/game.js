@@ -96,11 +96,8 @@ var PlayState = (function (_super) {
     /* called before each rendering frame */
     PlayState.prototype.update = function () {
         this.playerSteer();
-        /*
-
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
-        */
     };
     /* if curser keys are pressed, accelerate the player */
     PlayState.prototype.playerSteer = function () {
