@@ -1,4 +1,0 @@
-applications:
-- name: coder-dojo
-  host: coder-dojo
-  buildpack: ecf-staticfile-buildpack

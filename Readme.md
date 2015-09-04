@@ -1,14 +1,13 @@
 # About
 
-Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine.
+Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine. Phaser engine supports all modern browser as well as mobile devices.
 
-It allows children of all ages to build a physics-based game in less than 100 lines of code.
+The starter pack allows children of all ages to build a physics-based game in less than 100 lines of code.
 
 Using the free "Visual Studio Code" tool (Mac, Linux, Windows) full autocomplete and syntax checking support are available.
-
 The game is written in TypeScript to support better IDE support, but for all practical purposes is written in Javascript.
 
-[Demo](http://codinguncut.github.io/dojo-game/) (give it a moment to load)
+[Game Demo](http://codinguncut.github.io/dojo-game/) (assets need a moment to load)
 
 # Getting Started
 * Software
@@ -19,13 +18,13 @@ The game is written in TypeScript to support better IDE support, but for all pra
 	* download project [zip file](https://github.com/codinguncut/dojo-game/archive/master.zip)
 	* unzip master.zip (double-click, extract, choose folder)
 	* open project folder
-	* double-click on "install dependencies.bat"
+	* in "scripts" folder double-click "install dependencies.bat"
 * Serving
-	* double-click on "start web server.bat"
+	* in "scripts" folder double-click on "start web server.bat"
 	* minimize the terminal window
 	* enable "live page" in Chrome
 * Editing
-	* launch Visual Studio Code (i.e. by clicking on "VSCode" shortcut)
+	* launch Visual Studio Code (i.e. by clicking on "scripts\\VSCode" shortcut)
 		* on Windows this takes very long to load
 	* drag project folder to Visual Studio Code
 	* Run "build task" once (Ctrl-Shift-B)
@@ -34,7 +33,7 @@ The game is written in TypeScript to support better IDE support, but for all pra
 
 # MacOS, Linux
 * please run `npm install -g typescript http-server`
-* to run the local web server, run `npm start`
+* to run the local web server, run `http-server . -s -o`
 * open browser to "http://localhost:8080"
 
 # Getting images from the internet
