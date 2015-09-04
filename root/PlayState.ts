@@ -27,6 +27,7 @@ class PlayState extends Phaser.State {
         this.addPlayer();
         
         this.addEnemies();
+        
 
         //this.createButton();
 
