@@ -8,6 +8,7 @@ var PlayState = (function (_super) {
     __extends(PlayState, _super);
     function PlayState() {
         _super.apply(this, arguments);
+        this.GRAVITY = 900;
     }
     /* preload required assets before starting the game */
     PlayState.prototype.preload = function () {
@@ -19,12 +20,22 @@ var PlayState = (function (_super) {
     /* initialize the world and create initial elements */
     PlayState.prototype.create = function () {
         // NOTE: order of sprites added is relevant
+        var _this = this;
         //this.playMusic();
         this.buildLevel();
         this.addPlayer();
         this.addEnemies();
+        window.addEventListener("deviceorientation", function (e) { return _this.handleOrientation(e); }, true);
         //this.createButton();
         //this.addText();
+    };
+    /* set player gravity based on device orientation */
+    PlayState.prototype.handleOrientation = function (e) {
+        var x = e.gamma / 90.0; // gamma is (-90, 90)
+        var y = e.beta / 90.0; // beta is (-90, 90), when not upside-down
+        var mag = Math.sqrt(x * x + y * y);
+        var g = 900 / mag;
+        this.player.body.gravity.set(x * g, y * g);
     };
     PlayState.prototype.createButton = function () {
         this.game.add.button(400, 400, 'platform', function () {

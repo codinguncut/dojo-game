@@ -6,6 +6,8 @@ class PlayState extends Phaser.State {
     enemies: Phaser.Group;
     platforms:  Phaser.Group; 
     
+    GRAVITY = 900; 
+    
     /* preload required assets before starting the game */
     preload() {
         this.load.image("player", "root/assets/bunny.png");
@@ -28,10 +30,21 @@ class PlayState extends Phaser.State {
         
         this.addEnemies();
         
+        window.addEventListener("deviceorientation", 
+            (e) => this.handleOrientation(e), true);
 
         //this.createButton();
 
         //this.addText();
+    }
+
+    /* set player gravity based on device orientation */    
+    handleOrientation(e) {
+        var x = e.gamma / 90.0; // gamma is (-90, 90)
+        var y = e.beta / 90.0;  // beta is (-90, 90), when not upside-down
+        var mag = Math.sqrt(x*x + y*y);
+        var g = 900 / mag;
+        this.player.body.gravity.set(x*g, y*g);
     }
 
     createButton() {
