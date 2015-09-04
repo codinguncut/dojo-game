@@ -1,3 +1,12 @@
+# About
+
+Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine.
+It allows children of all ages to build a physics-based game in less than 100 lines of code.
+Using the free "Visual Studio Code" tool (Mac, Linux, Windows) full autocomplete and syntax checking support are available.
+The game is written in TypeScript to support better IDE support, but for all practical purposes is written in Javascript.
+
+[Demo](http://codinguncut.github.io/dojo-game/) (give it a moment to load)
+
 # Getting Started
 * Software
 	* install [Visual Studio Code](https://code.visualstudio.com/)
@@ -78,3 +87,5 @@
 # Create own sprites
 * http://www.piskelapp.com/ (save as png)
 
+# License
+* Licensed under MIT license
