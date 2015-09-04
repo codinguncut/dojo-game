@@ -22,7 +22,7 @@ class PlayState extends Phaser.State {
 
         this.addPlayer();
 
-        this.addText();
+        //this.addText();
     }
 
     addText() {    
