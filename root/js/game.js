@@ -13,7 +13,7 @@ var PlayState = (function (_super) {
     PlayState.prototype.preload = function () {
         this.load.image("player", "root/assets/bunny.png");
         this.load.image("platform", "root/assets/platform.png");
-        this.load.audio("music", "root/assets/Twists.mp3");
+        //this.load.audio("music", "root/assets/Twists.mp3");
         this.game.load.atlasXML('jumper', 'root/assets/spritesheet_jumper.png', 'root/assets/spritesheet_jumper.xml');
     };
     /* initialize the world and create initial elements */
