@@ -22,7 +22,15 @@ class PlayState extends Phaser.State {
 
         this.addPlayer();
 
+        //this.createButton();
+
         //this.addText();
+    }
+
+    createButton() {
+        this.game.add.button(400, 400, 'platform', () => {
+            console.log('hello world');
+        });
     }
 
     addText() {    

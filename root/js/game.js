@@ -21,7 +21,13 @@ var PlayState = (function (_super) {
         //this.playMusic();
         this.addPlatform();
         this.addPlayer();
+        //this.createButton();
         //this.addText();
+    };
+    PlayState.prototype.createButton = function () {
+        this.game.add.button(400, 400, 'platform', function () {
+            console.log('hello world');
+        });
     };
     PlayState.prototype.addText = function () {
         var text = this.add.text(200, 200, "hello world", {
