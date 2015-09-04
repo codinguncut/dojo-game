@@ -13,7 +13,7 @@ class InitState extends Phaser.State {
         this.drawCoords();
     
         // start PlayState
-        this.game.state.start("play", false /* clearWorld */);
+        //this.game.state.start("play", false /* clearWorld */);
     }
     
     // draw coordinate system on screen

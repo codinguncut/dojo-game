@@ -125,7 +125,7 @@ var InitState = (function (_super) {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.drawCoords();
         // start PlayState
-        this.game.state.start("play", false /* clearWorld */);
+        //this.game.state.start("play", false /* clearWorld */);
     };
     // draw coordinate system on screen
     InitState.prototype.drawCoords = function () {
@@ -188,7 +188,7 @@ var Game = (function (_super) {
     __extends(Game, _super);
     function Game() {
         // source: see above (joshmorony.com)
-        var width = window.innerWidth * window.devicePixelRatio, height = window.innerHeight * window.devicePixelRatio;
+        var width = window.innerWidth, height = window.innerHeight; // * window.devicePixelRatio;
         // Note: may need to set Phaser.CANVAS for mobile
         _super.call(this, width, height, Phaser.CANVAS); //AUTO);
         this.state.add("init", new InitState());
