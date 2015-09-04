@@ -12,17 +12,21 @@ var PlayState = (function (_super) {
     /* preload required assets before starting the game */
     PlayState.prototype.preload = function () {
         this.load.image("player", "root/assets/bunny.png");
+        /*
         this.load.image("platform", "root/assets/platform.png");
         //this.load.audio("music", "root/assets/Twists.mp3");
-        this.game.load.atlasXML('jumper', 'root/assets/spritesheet_jumper.png', 'root/assets/spritesheet_jumper.xml');
+        this.game.load.atlasXML('jumper',
+            'root/assets/spritesheet_jumper.png',
+            'root/assets/spritesheet_jumper.xml');
+        */
     };
     /* initialize the world and create initial elements */
     PlayState.prototype.create = function () {
         // NOTE: order of sprites added is relevant
         //this.playMusic();
-        this.buildLevel();
+        //this.buildLevel();
         this.addPlayer();
-        this.addEnemies();
+        //this.addEnemies();
         //this.createButton();
         //this.addText();
     };
@@ -91,9 +95,12 @@ var PlayState = (function (_super) {
     };
     /* called before each rendering frame */
     PlayState.prototype.update = function () {
+        /*
         this.playerSteer();
+
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
+        */
     };
     /* if curser keys are pressed, accelerate the player */
     PlayState.prototype.playerSteer = function () {
@@ -125,7 +132,7 @@ var InitState = (function (_super) {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.drawCoords();
         // start PlayState
-        //this.game.state.start("play", false /* clearWorld */);
+        this.game.state.start("play", false /* clearWorld */);
     };
     // draw coordinate system on screen
     InitState.prototype.drawCoords = function () {

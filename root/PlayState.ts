@@ -9,11 +9,13 @@ class PlayState extends Phaser.State {
     /* preload required assets before starting the game */
     preload() {
         this.load.image("player", "root/assets/bunny.png");
+        /*
         this.load.image("platform", "root/assets/platform.png");
         //this.load.audio("music", "root/assets/Twists.mp3");
         this.game.load.atlasXML('jumper', 
             'root/assets/spritesheet_jumper.png', 
             'root/assets/spritesheet_jumper.xml');
+        */
     }
     
     /* initialize the world and create initial elements */
@@ -22,11 +24,11 @@ class PlayState extends Phaser.State {
 
         //this.playMusic();
         
-        this.buildLevel();
+        //this.buildLevel();
 
         this.addPlayer();
         
-        this.addEnemies();
+        //this.addEnemies();
 
         //this.createButton();
 
@@ -113,10 +115,12 @@ class PlayState extends Phaser.State {
     
     /* called before each rendering frame */
     update() {
+        /*
         this.playerSteer();        
 
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
+        */
     }
 
     /* if curser keys are pressed, accelerate the player */    
