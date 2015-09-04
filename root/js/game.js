@@ -47,7 +47,8 @@ var PlayState = (function (_super) {
     /* add a platform */
     PlayState.prototype.buildLevel = function () {
         this.platforms = this.add.group();
-        var platform = this.platforms.create(200, 300, "platform");
+        var platform;
+        platform = this.platforms.create(200, 300, "platform");
         this.game.physics.arcade.enableBody(platform);
         platform.body.immovable = true;
     };
@@ -76,7 +77,8 @@ var PlayState = (function (_super) {
     };
     PlayState.prototype.addEnemies = function () {
         this.enemies = this.add.group();
-        var wingman = this.enemies.create(330, 100, 'jumper');
+        var wingman;
+        wingman = this.enemies.create(330, 100, 'jumper');
         // set anchor to middle of sprite
         wingman.anchor.set(.5, .5);
         // enable physics for player
@@ -188,7 +190,7 @@ var Game = (function (_super) {
         // source: see above (joshmorony.com)
         var width = window.innerWidth * window.devicePixelRatio, height = window.innerHeight * window.devicePixelRatio;
         // Note: may need to set Phaser.CANVAS for mobile
-        _super.call(this, width, height, Phaser.AUTO);
+        _super.call(this, width, height, Phaser.CANVAS); //AUTO);
         this.state.add("init", new InitState());
         this.state.add("play", new PlayState());
         this.state.start("init");
