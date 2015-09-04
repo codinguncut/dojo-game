@@ -6,12 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/.bin/http-server root"
+    "start": "http-server ."
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "http-server": "^0.8.0",
-    "tsc": "^1.20150623.0"
   }
 }

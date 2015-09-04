@@ -3,22 +3,35 @@
 	* install [Visual Studio Code](https://code.visualstudio.com/)
 	* install [nodejs](https://nodejs.org/en/)
 	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
-	* in project folder: `npm install` (for "tsc")
+* Project
+	* download project [zip file](https://github.com/codinguncut/dojo-game/archive/master.zip)
+	* unzip master.zip (double-click, extract, choose folder)
+	* open project folder
+	* double-click on "install dependencies.bat"
 * Serving
-    * Option 1 - local web server
-        * `npm start`
-        * open browser to: "http://localhost:8080", enable "live page"
-    * Option 2 - Chrome - open files locally
-        * set flag "--allow-file-access-from-files" for Chrome
-        * open index.html in browser, enable "live page"
-    * Option 3 - Firefox - open files locally
-        * open "about:config"
-        * set "security.fileuri.strict_origin_policy" to "false"
-        * no good "live page" alternative for firefox
+	* double-click on "start web server.bat"
+	* minimize the terminal window
+	* enable "live page" in Chrome
 * Editing
-	* open project folder in Visual Studio Code
-	* Run "build task" once (on Mac: Command-Shift-B)
-	* From then on build task will run automatically with each "Save" 
+	* launch Visual Studio Code
+	* drag project folder to Visual Studio Code
+	* Run "build task" once (Ctrl-Shift-B)
+		* you will see a little spinner in the bottom left corner
+		* From then on build task will run automatically with each "Save" 
+
+# Getting Started (non-Windows)
+* please run `npm install -g typescript http-server`
+* to run the local web server, run `npm start`
+
+# Getting images from the internet
+* for best results images need a transparent background
+* google search i.e. "penguin"
+	* images
+		* Search tools
+			* Color -> Transparent
+	* click on image
+		* View image
+			* right-click - "Save Image as"
 
 
 # "Easy" Activities
@@ -28,9 +41,6 @@
 	* angle
 	* scale
 * Background Image
-* Primitives
-	* Graphics (drawCircle, lineTo, drawRect)
-		* beginFill, endFill?
 * Play a sound
 * Basic Input
 	* dragging (enableDrag)
@@ -38,20 +48,18 @@
 * Constant movement
 	* rotation
 	* translation
+* Button
 * Use existing sprite animation (load.atlas, load.atlasXML, add, play)
 * Spritesheet (load.spritesheet)
+* Grouping
+* draw own sprite
 
-
-## Advanced
-* Draw interactive polygon
-* Tweening
+# Advanced Activities
 * Advanced input
 	* keyboard events
 	* keyboard.addKeys (i.e. naming keys for actions)
 	* pointer click/tap events
-* Sprite anchor
-* Grouping
-* Button triggers event (add.button + callback)
+* Set sprite anchor
 * Physics
 	* collisions handling
 	* bounce
@@ -62,28 +70,9 @@
 * Dynamically spawning objects
 * Tilemaps
 * Camera (follow, zoom, cull(?))
-* box2d
 * Timer
 
 
-# Phaser Resources
-* http://gamemechanicexplorer.com/
-* http://mightyfingers.com/
-* http://phaser.io/sandbox
-* https://koding.com/ has a dedicated phaser environment
+# Create own sprites
+* http://www.piskelapp.com/ (save as png)
 
-
-# Game Art Resources
-* kenney.nl/assets
-* open bundle cc0
-* opengameart.org
-* reddit link for free game art
-* spritelib
-* phaser-examples/assets/
-
-
-# TODO
-* integrate web server into VSCode (either via `npm start` or a `gulp watch serve`)
-* scale canvas to screen
-* create git snapshots for incremental tasks
-* consider "npm livereload" instead of "chrome live page"
