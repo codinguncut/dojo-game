@@ -13,25 +13,26 @@
 	* minimize the terminal window
 	* enable "live page" in Chrome
 * Editing
-	* launch Visual Studio Code
+	* launch Visual Studio Code (i.e. by clicking on "VSCode" shortcut)
+		* on Windows this takes very long to load
 	* drag project folder to Visual Studio Code
 	* Run "build task" once (Ctrl-Shift-B)
 		* you will see a little spinner in the bottom left corner
 		* From then on build task will run automatically with each "Save" 
 
-# Getting Started (non-Windows)
+# MacOS, Linux
 * please run `npm install -g typescript http-server`
 * to run the local web server, run `npm start`
 
 # Getting images from the internet
 * for best results images need a transparent background
 * google search i.e. "penguin"
-	* images
+	* Images
 		* Search tools
 			* Color -> Transparent
-	* click on image
+	* Click on the image
 		* View image
-			* right-click - "Save Image as"
+			* Right-click - "Save Image as"
 
 
 # "Easy" Activities
@@ -52,7 +53,7 @@
 * Use existing sprite animation (load.atlas, load.atlasXML, add, play)
 * Spritesheet (load.spritesheet)
 * Grouping
-* draw own sprite
+* Find/draw own sprite to add
 
 # Advanced Activities
 * Advanced input
