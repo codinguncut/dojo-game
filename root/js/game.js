@@ -24,7 +24,9 @@ var PlayState = (function (_super) {
         //this.playMusic();
         this.buildLevel();
         this.addPlayer();
-        this.addEnemies();
+        this.enemies = this.add.group();
+        this.addEnemy();
+        this.game.input.onDown.add(this.addEnemy, this);
         // event listener for mobile devices
         window.addEventListener("deviceorientation", function (e) { return _this.handleOrientation(e); }, true);
         //this.createButton();
@@ -89,10 +91,9 @@ var PlayState = (function (_super) {
             // play sound?
         });
     };
-    PlayState.prototype.addEnemies = function () {
-        this.enemies = this.add.group();
+    PlayState.prototype.addEnemy = function () {
         var wingman;
-        wingman = this.enemies.create(330, 100, 'jumper');
+        wingman = this.enemies.create(game.world.randomX, 100, 'jumper');
         // set anchor to middle of sprite
         wingman.anchor.set(.5, .5);
         // enable physics for player
@@ -105,7 +106,12 @@ var PlayState = (function (_super) {
     };
     /* called before each rendering frame */
     PlayState.prototype.update = function () {
+        var _this = this;
         this.playerSteer();
+        var vel = 100;
+        this.enemies.forEachAlive(function (enemy) {
+            _this.game.physics.arcade.moveToObject(enemy, _this.player, 100);
+        }, this);
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
     };

@@ -28,7 +28,10 @@ class PlayState extends Phaser.State {
 
         this.addPlayer();
         
-        this.addEnemies();
+        this.enemies = this.add.group();
+        this.addEnemy();
+        
+        this.game.input.onDown.add(this.addEnemy, this);
         
         // event listener for mobile devices
         window.addEventListener("deviceorientation", 
@@ -110,11 +113,10 @@ class PlayState extends Phaser.State {
         });
     }
     
-    addEnemies() {
-        this.enemies = this.add.group();
+    addEnemy() {
         
         var wingman : Phaser.Sprite;
-        wingman = this.enemies.create(330, 100, 'jumper');
+        wingman = this.enemies.create(game.world.randomX, 100, 'jumper');
         // set anchor to middle of sprite
         wingman.anchor.set(.5, .5);
 
@@ -131,8 +133,13 @@ class PlayState extends Phaser.State {
     
     /* called before each rendering frame */
     update() {
-        this.playerSteer();        
-
+        this.playerSteer();       
+        
+        var vel = 100;
+        this.enemies.forEachAlive((enemy : Phaser.Sprite) => {
+            this.game.physics.arcade.moveToObject(enemy, this.player, 100);
+        }, this);
+        
         this.game.physics.arcade.collide(this.player, this.platforms);
         this.game.physics.arcade.collide(this.player, this.enemies);
     }
