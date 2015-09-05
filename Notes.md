@@ -1,9 +1,14 @@
 # Phaser Resources
+* http://phaser.io/tutorials/making-your-first-phaser-game
 * http://gamemechanicexplorer.com/
 * a million examples in phaser github
 * http://phaser.io/sandbox
 * http://mightyfingers.com/
 
+# Managing Screen Size
+* http://sbcgamesdev.blogspot.ie/2015/04/phaser-tutorial-manage-different-screen.html
+* http://www.html5gamedevs.com/topic/5949-solution-scaling-for-multiple-devicesresolution-and-screens/
+* http://www.html5gamedevs.com/topic/1380-how-to-scale-entire-game-up/
 
 # Game Art Resources
 * http://kenney.nl/assets
