@@ -5,6 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var cursors;
+var sprites;
 var InitState = (function (_super) {
     __extends(InitState, _super);
     function InitState() {
@@ -21,7 +22,10 @@ var InitState = (function (_super) {
         var scaleRatio = 1 / window.devicePixelRatio;
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         this.scale.setUserScale(scaleRatio, scaleRatio);
+        // create shorter cursor aliases
         cursors = game.input.keyboard.createCursorKeys();
+        // group for physics sprites
+        sprites = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
         this.drawCoords();
         this.game.load.baseURL = "root/assets/";
         // start PlayState
@@ -35,11 +39,16 @@ var InitState = (function (_super) {
         var w = this.game.width - offset;
         var h = this.game.height - offset;
         var arrowSize = 0.3;
-        var fontSize = 15;
+        var fontSize = 20;
         var fontColor = '#ffd900';
         g.lineStyle(3, color, 1);
         // origin text
-        this.game.add.text(offset * 2, offset * 1.5, "(0, 0)", {
+        this.game.add.text(offset * 2, offset * 1.5, "(0, 0)\n(x, y)", {
+            fontSize: fontSize,
+            fill: fontColor
+        });
+        // x-axis text
+        this.game.add.text(w / 2.0, offset * 1.5, "x-axis", {
             fontSize: fontSize,
             fill: fontColor
         });
@@ -55,7 +64,12 @@ var InitState = (function (_super) {
         g.lineTo(w, offset);
         g.endFill();
         // x text
-        this.game.add.text(w - offset * 2, offset * 1.5, "(" + w + ', ' + 0 + ')', {
+        this.game.add.text(w - offset * 4, offset * 1.5, "(" + w + ', ' + 0 + ')', {
+            fontSize: fontSize,
+            fill: fontColor
+        });
+        // y-axis text
+        this.game.add.text(offset * 2, h / 2.0, "y-axis", {
             fontSize: fontSize,
             fill: fontColor
         });
@@ -85,7 +99,6 @@ var GRAVITY = 900;
 // need type annotation for autocomplete
 var player;
 var enemies;
-var platforms;
 var score = 0;
 var scoreText;
 /* preload game assets before starting the game */
@@ -98,7 +111,6 @@ function preload() {
 }
 /* create the game world and entities */
 function create() {
-    platforms = game.add.group(); // game.add.physicsGroup()
     addPlatform();
     enemies = game.add.group();
     addEnemy();
@@ -117,7 +129,7 @@ function update() {
         game.physics.arcade.moveToObject(enemy, player, vel);
     }, game);
     // player physics interaction with platforms
-    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(sprites, sprites);
     // what happens when player touches enemy
     game.physics.arcade.overlap(player, enemies, enemyContact, null, null);
 }
@@ -141,15 +153,12 @@ function addScore() {
 }
 function addPlatform() {
     var platform;
-    platform = platforms.create(200, 300, "platform");
-    game.physics.arcade.enableBody(platform);
+    platform = sprites.create(200, 300, "platform");
     platform.body.immovable = true;
 }
 function addPlayer() {
     // add player sprite to game 
-    player = game.add.sprite(450, 50, 'player');
-    // enable physics for player
-    game.physics.arcade.enableBody(player);
+    player = sprites.create(450, 50, 'player');
     // stop player from moving beyond screen boundary        
     player.body.collideWorldBounds = true;
     // note: physics units are in pixels and seconds

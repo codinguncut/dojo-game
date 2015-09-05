@@ -7,7 +7,6 @@ const GRAVITY = 900;
 // need type annotation for autocomplete
 var player : Phaser.Sprite;
 var enemies : Phaser.Group;
-var platforms : Phaser.Group; 
 
 var score = 0;
 var scoreText : Phaser.Text;
@@ -27,7 +26,6 @@ function preload() {
 
 /* create the game world and entities */
 function create() {
-    platforms = game.add.group(); // game.add.physicsGroup()
     addPlatform();
 
     enemies = game.add.group();
@@ -53,7 +51,7 @@ function update() {
     }, game);
     
     // player physics interaction with platforms
-    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(sprites, sprites);
     
     // what happens when player touches enemy
     game.physics.arcade.overlap(player, enemies, enemyContact, null, null);
@@ -86,17 +84,14 @@ function addScore() {
 
 function addPlatform() {   
     var platform : Phaser.Sprite;
-    platform = platforms.create(200, 300, "platform");
-    game.physics.arcade.enableBody(platform);
+    platform = sprites.create(200, 300, "platform");
     platform.body.immovable = true;
 }
 
 function addPlayer() {
     // add player sprite to game 
-    player = game.add.sprite(450, 50, 'player');
+    player = sprites.create(450, 50, 'player');
     
-    // enable physics for player
-    game.physics.arcade.enableBody(player);
     // stop player from moving beyond screen boundary        
     player.body.collideWorldBounds = true;
 

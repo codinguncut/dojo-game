@@ -46,7 +46,8 @@
 * setup .settings/launch.json for web server
 * consider using "tsc --watch" in launch.json
 * set output directory for intermediate json files
-
+* http://www.inkfood.com/minimal-ui-on-ios8/
+ 
 # Code Notes
     // load tilemap created with "Tiled" editor
     // source: http://phaser.io/examples/v2/tilemaps/mario

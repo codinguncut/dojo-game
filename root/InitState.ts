@@ -1,6 +1,7 @@
 /// <reference path="lib/phaser.d.ts" />
 
 var cursors : Phaser.CursorKeys;
+var sprites : Phaser.Group;
 
 class InitState extends Phaser.State {
     
@@ -19,7 +20,11 @@ class InitState extends Phaser.State {
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         this.scale.setUserScale(scaleRatio, scaleRatio);
         
+        // create shorter cursor aliases
         cursors = game.input.keyboard.createCursorKeys();
+        
+        // group for physics sprites
+        sprites = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
 
         this.drawCoords();
         
@@ -38,13 +43,19 @@ class InitState extends Phaser.State {
         var w = this.game.width - offset;
         var h = this.game.height - offset;
         var arrowSize = 0.3;
-        var fontSize = 15;
+        var fontSize = 20;
         var fontColor = '#ffd900';
 
         g.lineStyle(3, color, 1);
 
         // origin text
-        this.game.add.text(offset*2, offset*1.5, "(0, 0)", {
+        this.game.add.text(offset*2, offset*1.5, "(0, 0)\n(x, y)", {
+            fontSize: fontSize,
+            fill: fontColor
+        });
+
+        // x-axis text
+        this.game.add.text(w/2.0, offset*1.5, "x-axis", {
             fontSize: fontSize,
             fill: fontColor
         });
@@ -63,7 +74,13 @@ class InitState extends Phaser.State {
         g.endFill();
         
         // x text
-        this.game.add.text(w-offset*2, offset*1.5, "(" + w + ', ' + 0 + ')', {
+        this.game.add.text(w-offset*4, offset*1.5, "(" + w + ', ' + 0 + ')', {
+            fontSize: fontSize,
+            fill: fontColor
+        });
+
+        // y-axis text
+        this.game.add.text(offset*2, h/2.0, "y-axis", {
             fontSize: fontSize,
             fill: fontColor
         });
