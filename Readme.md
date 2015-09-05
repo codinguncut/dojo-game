@@ -12,7 +12,7 @@ The setup below is leveraging TypeScript to support better IDE support, but for 
 
 # Getting Started
 * Software
-	* install [Visual Studio Code](https://code.visualstudio.com/)
+	* install [Visual Studio Code](https://code.visualstudio.com/) (free)
 	* install [nodejs](https://nodejs.org/en/)
 	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
 * Project
