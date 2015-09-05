@@ -81,7 +81,6 @@ var InitState = (function (_super) {
 /// <reference path="lib/phaser.d.ts" />
 /// <reference path="Main.ts" />
 /// <reference path="InitState.ts" />
-// TODO: get rid of "this", use instance instead of class
 var GRAVITY = 900;
 // need type annotation for autocomplete
 var player;

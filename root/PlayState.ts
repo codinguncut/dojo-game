@@ -2,8 +2,6 @@
 /// <reference path="Main.ts" />
 /// <reference path="InitState.ts" />
 
-// TODO: get rid of "this", use instance instead of class
-
 const GRAVITY = 900; 
 
 // need type annotation for autocomplete
