@@ -85,7 +85,7 @@ var GRAVITY = 900;
 // need type annotation for autocomplete
 var player;
 var enemies;
-var platforms; // game.add.physicsGroup()
+var platforms;
 var score = 0;
 var scoreText;
 /* preload game assets before starting the game */
@@ -93,61 +93,67 @@ function preload() {
     game.load.image("player", "bunny.png");
     game.load.image("platform", "platform.png");
     game.load.audio("coin", "coin1.wav");
-    // packed atlas spritesheet
+    // load "tile-packed" sprite atlas
     game.load.atlasXML('jumper', 'kenney/spritesheet_jumper.png', 'kenney/spritesheet_jumper.xml');
+    // load tilemap created with "Tiled" editor
     // source: http://phaser.io/examples/v2/tilemaps/mario
     //game.load.tilemap('mario', 'assets/tilemaps/maps/super_mario.json', null, 
     //    Phaser.Tilemap.TILED_JSON);
-    // fixed size spritesheet
+    // load fixed size spritesheet
     //game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }
 /* create the game world and entities */
 function create() {
-    // NOTE: order of sprites added is relevant
-    //playMusic();
-    platforms = game.add.group();
+    platforms = game.add.group(); // game.add.physicsGroup()
     addPlatform();
-    addPlayer();
     enemies = game.add.group();
     addEnemy();
-    // callback can take "pointer" param
+    addPlayer();
+    // spawn enemies when clicking in game
     game.input.onDown.add(addEnemy, this);
     // event listener for mobile devices
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    window.addEventListener("deviceorientation", updatePlayerGravity, true);
     addScore();
 }
 /* update step before each frame rendering */
 function update() {
+    // player cursor controls
     playerSteer();
-    var vel = 100;
+    // make enemies fly towards player
     enemies.forEachAlive(function (enemy) {
-        game.physics.arcade.moveToObject(enemy, player, 100);
+        var vel = 100;
+        game.physics.arcade.moveToObject(enemy, player, vel);
     }, game);
+    // player physics interaction with platforms
     game.physics.arcade.collide(player, platforms);
+    // what happens when player touches enemy
     game.physics.arcade.overlap(player, enemies, enemyContact, null, null);
 }
 /////////////////////
 /* what to do when player touches enemy */
 function enemyContact(player, enemy) {
     enemy.kill();
+    // update score
     score += 1;
     scoreText.text = "Score: " + score;
+    // play coin sound
     var coin = game.add.audio("coin", 1 /*volume*/, false /*loop*/);
     coin.play();
 }
-/* set player gravity based on device orientation */
-function handleOrientation(e) {
-    if (e.gamma != null) {
-        var x = e.gamma / 90.0; // gamma is (-90, 90)
-        var y = e.beta / 90.0; // beta is (-90, 90), when not upside-down
+/* set player gravity based on mobile device orientation */
+function updatePlayerGravity(orientation) {
+    // make sure we are getting valid orientation
+    if (orientation.gamma != null) {
+        var x = orientation.gamma / 90.0; // gamma is (-90, 90)
+        var y = orientation.beta / 90.0; // beta is (-90, 90), when not upside-down
         var mag = Math.sqrt(x * x + y * y);
-        var g = 900 / mag;
+        var g = GRAVITY / mag;
         player.body.gravity.set(x * g, y * g);
     }
 }
 function addScore() {
-    scoreText = game.add.text(80, 20, "Score: 0", {
-        fontSize: 40,
+    scoreText = game.add.text(100, 20, "Score: 0", {
+        fontSize: 30,
         fill: 'red'
     });
     //scoreText.scale.setTo(2, 2);
@@ -164,15 +170,16 @@ function addPlayer() {
     player = game.add.sprite(450, 50, 'player');
     // enable physics for player
     game.physics.arcade.enableBody(player);
-    // player will stop moving at screen boundary        
+    // stop player from moving beyond screen boundary        
     player.body.collideWorldBounds = true;
-    // physics units are pixels/second/second
-    player.body.gravity.set(0, 900);
-    player.body.drag.set(300);
-    player.body.bounce.set(0.8);
+    // note: physics units are in pixels and seconds
+    player.body.gravity.set(0, GRAVITY);
+    player.body.drag.set(300); // drag == friction/air resistance
+    player.body.bounce.set(0.8); // 80% bounce
     // enable mouse interaction with sprite
     player.inputEnabled = true;
-    // drag doesn't work well with gravity
+    // make player draggable using the mouse
+    // note: drag doesn't work well with player gravity enabled
     //player.input.enableDrag(true);
     // kill player when clicked on
     player.events.onInputDown.add(function () {
@@ -181,23 +188,24 @@ function addPlayer() {
     });
 }
 function addEnemy() {
-    var wingman;
-    wingman = enemies.create(game.world.randomX, 100, 'jumper');
+    var enemy;
+    enemy = enemies.create(game.world.randomX, 100, 'jumper');
     // set anchor to middle of sprite
-    wingman.anchor.set(.5, .5);
-    // enable physics for player
-    game.physics.arcade.enableBody(wingman);
-    wingman.body.collideWorldBounds = true;
-    wingman.body.bounce.set(0.8);
-    wingman.body.drag.set(100);
-    wingman.animations.add('flap', [110, 111, 112, 113, 114], 10 /*fps*/, true /*loop*/);
-    wingman.animations.play('flap');
+    enemy.anchor.set(.5, .5);
+    // enable physics for enemy
+    game.physics.arcade.enableBody(enemy);
+    enemy.body.collideWorldBounds = true;
+    enemy.body.bounce.set(0.8);
+    enemy.body.drag.set(100);
+    // add frames 110-114 from spritesheet 'jumper' to animation
+    enemy.animations.add('flap', [110, 111, 112, 113, 114], 10 /*fps*/, true /*loop*/);
+    enemy.animations.play('flap');
 }
 /* if curser keys are pressed, accelerate the player */
 function playerSteer() {
     player.body.acceleration.setTo(0, 0);
     if (cursors.up.isDown) {
-        player.body.acceleration.y = -1300;
+        player.body.acceleration.y = -GRAVITY * 1.5;
     }
     if (cursors.left.isDown) {
         player.body.acceleration.x = -900;
