@@ -93,9 +93,12 @@ var scoreText;
 function preload() {
     game.load.image("player", "bunny.png");
     game.load.image("platform", "platform.png");
-    //game.load.audio("music", "Twists.mp3");
+    game.load.audio("coin", "coin1.wav");
     // packed atlas spritesheet
     game.load.atlasXML('jumper', 'spritesheet_jumper.png', 'spritesheet_jumper.xml');
+    // source: http://phaser.io/examples/v2/tilemaps/mario
+    //game.load.tilemap('mario', 'assets/tilemaps/maps/super_mario.json', null, 
+    //    Phaser.Tilemap.TILED_JSON);
     // fixed size spritesheet
     //game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 }
@@ -108,6 +111,7 @@ function create() {
     addPlayer();
     enemies = game.add.group();
     addEnemy();
+    // callback can take "pointer" param
     game.input.onDown.add(addEnemy, this);
     // event listener for mobile devices
     window.addEventListener("deviceorientation", handleOrientation, true);
@@ -129,6 +133,8 @@ function enemyContact(player, enemy) {
     enemy.kill();
     score += 1;
     scoreText.text = "Score: " + score;
+    var coin = game.add.audio("coin", 1 /*volume*/, false /*loop*/);
+    coin.play();
 }
 /* set player gravity based on device orientation */
 function handleOrientation(e) {
@@ -147,10 +153,6 @@ function addScore() {
     });
     //scoreText.scale.setTo(2, 2);
     //scoreText.angle = 20;
-}
-function playMusic() {
-    var music = game.add.audio("music", 1 /*volume*/, false /*loop*/);
-    music.play();
 }
 function addPlatform() {
     var platform;

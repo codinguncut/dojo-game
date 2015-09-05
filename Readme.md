@@ -93,6 +93,8 @@ The game is written in TypeScript to support better IDE support, but for all pra
 * Tilemaps
 * Camera (follow, zoom, cull(?))
 * Timer
+* Virtual joystick
+	* http://phaser.io/examples/v2/virtualjoystick/arcade-joystick
 
 
 # License
