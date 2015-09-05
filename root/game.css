@@ -5,12 +5,13 @@ html, body {
     height: 100%;
 }
 
-html {
-    margin-top: 1px; // for ios scroll fix
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 body {
-    background-color: #ccc;
+    padding-top: 1px; // for ios scroll fix
+    background-color: black;
 }
 
 canvas {
