@@ -95,7 +95,7 @@ function preload() {
     game.load.image("platform", "platform.png");
     game.load.audio("coin", "coin1.wav");
     // packed atlas spritesheet
-    game.load.atlasXML('jumper', 'spritesheet_jumper.png', 'spritesheet_jumper.xml');
+    game.load.atlasXML('jumper', 'kenney/spritesheet_jumper.png', 'kenney/spritesheet_jumper.xml');
     // source: http://phaser.io/examples/v2/tilemaps/mario
     //game.load.tilemap('mario', 'assets/tilemaps/maps/super_mario.json', null, 
     //    Phaser.Tilemap.TILED_JSON);
