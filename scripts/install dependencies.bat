@@ -1,1 +1,1 @@
-npm install -g typescript http-server
+npm install -g typescript live-server

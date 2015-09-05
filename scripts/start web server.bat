@@ -1,1 +1,1 @@
-start http-server -s .. && timeout /t 2 && start chrome http://localhost:8080
+start live-server .. && timeout /t 2 && start chrome http://localhost:8080

@@ -1,11 +1,15 @@
 # About
 
-Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine. Phaser engine supports all modern browser as well as mobile devices.
+Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine. Phaser 
+engine supports all modern browser as well as mobile devices.
 
-The starter pack allows children of all ages to build a physics-based game in less than 100 lines of code.
+The starter pack allows children of all ages to build a physics-based game in 
+less than 100 lines of code.
 
-Using the free "Visual Studio Code" tool (Mac, Linux, Windows) full autocomplete and syntax checking support are available.
-The setup below is leveraging TypeScript to support better IDE support, but for all practical purposes the game is written in Javascript.
+Using the free "Visual Studio Code" tool (Mac, Linux, Windows) full autocomplete 
+and syntax checking support are available.
+The below setup suggestion is leveraging TypeScript to support better IDE support, 
+but for all practical purposes the game is written in Javascript.
 
 [Game Demo](http://codinguncut.github.io/dojo-game/) (assets need a moment to load)
 
@@ -14,7 +18,6 @@ The setup below is leveraging TypeScript to support better IDE support, but for 
 * Software
 	* install [Visual Studio Code](https://code.visualstudio.com/) (free)
 	* install [nodejs](https://nodejs.org/en/)
-	* install [livepage](https://chrome.google.com/webstore/detail/livepage/pilnojpmdoofaelbinaeodfpjheijkbh?hl=en) for Chrome
 * Project
 	* download project [zip file](https://github.com/codinguncut/dojo-game/archive/master.zip)
 	* unzip master.zip (double-click, extract, choose folder)
@@ -23,7 +26,6 @@ The setup below is leveraging TypeScript to support better IDE support, but for 
 * Serving
 	* in "scripts" folder double-click on "start web server.bat"
 	* minimize the terminal window
-	* enable "live page" in Chrome
 * Editing
 	* launch Visual Studio Code (i.e. by clicking on "scripts\\VSCode" shortcut)
 		* on Windows this takes very long to load

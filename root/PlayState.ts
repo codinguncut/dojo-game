@@ -12,6 +12,7 @@ var platforms : Phaser.Group;
 var score = 0;
 var scoreText : Phaser.Text;
 
+
 /* preload game assets before starting the game */
 function preload() {
     game.load.image("player", "bunny.png");
