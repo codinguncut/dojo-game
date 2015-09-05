@@ -33,7 +33,9 @@
 * http://pyxeledit.com/
 
 # Level Editing
-* http://www.mapeditor.org/
+* [Tiled](http://www.mapeditor.org/)
+* https://github.com/nkholski/phaser-tiled-extras
+* https://github.com/englercj/phaser-tiled
 
 # Audio
 * https://github.com/tonistiigi/audiosprite

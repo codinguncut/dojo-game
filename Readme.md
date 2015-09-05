@@ -5,7 +5,7 @@ Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine. Phas
 The starter pack allows children of all ages to build a physics-based game in less than 100 lines of code.
 
 Using the free "Visual Studio Code" tool (Mac, Linux, Windows) full autocomplete and syntax checking support are available.
-The game is written in TypeScript to support better IDE support, but for all practical purposes is written in Javascript.
+The setup below is leveraging TypeScript to support better IDE support, but for all practical purposes the game is written in Javascript.
 
 [Game Demo](http://codinguncut.github.io/dojo-game/) (assets need a moment to load)
 
@@ -39,7 +39,7 @@ The game is written in TypeScript to support better IDE support, but for all pra
 * open browser to "http://localhost:8080"
 
 
-# Getting images from the internet
+# Getting (transparent) images from the internet
 * for best results images need a transparent background
 * google search i.e. "penguin"
 	* Images
@@ -91,7 +91,7 @@ The game is written in TypeScript to support better IDE support, but for all pra
 * Callbacks
 * Dynamically spawning objects
 * Tilemaps
-* Camera (follow, zoom, cull(?))
+* Camera follow
 * Timer
 * Virtual joystick
 	* http://phaser.io/examples/v2/virtualjoystick/arcade-joystick
