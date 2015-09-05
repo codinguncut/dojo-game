@@ -1,5 +1,7 @@
 /// <reference path="lib/phaser.d.ts" />
 
+var cursors : Phaser.CursorKeys;
+
 class InitState extends Phaser.State {
     
     /* initialize the world and create initial elements */
@@ -16,8 +18,13 @@ class InitState extends Phaser.State {
 
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         this.scale.setUserScale(scaleRatio, scaleRatio);
+        
+        cursors = game.input.keyboard.createCursorKeys();
 
         this.drawCoords();
+        
+        this.game.load.baseURL = "root/assets/";
+
     
         // start PlayState
         this.game.state.start("play", false /* clearWorld */);

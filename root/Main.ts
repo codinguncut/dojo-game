@@ -11,10 +11,16 @@ class Game extends Phaser.Game {
         super(width, height, Phaser.CANVAS, 'game'); //AUTO);
 
         this.state.add("init", new InitState());
-        this.state.add("play", new PlayState());
+        
+        var playState = {
+            preload: preload,
+            create: create,
+            update: update
+        }
+
+        this.state.add("play", playState);
         this.state.start("init"); 
     }
 }
 
 var game = new Game();
-
