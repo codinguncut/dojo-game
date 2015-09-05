@@ -5,12 +5,14 @@ html, body {
     height: 100%;
 }
 
+/*
 ::-webkit-scrollbar { 
     display: none; 
 }
+*/
 
 body {
-    padding-top: 80px; // for ios scroll fix
+    /*padding-top: 80px; // for ios scroll fix*/
     background-color: #000;
 }
 
