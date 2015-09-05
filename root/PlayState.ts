@@ -17,19 +17,12 @@ var scoreText : Phaser.Text;
 function preload() {
     game.load.image("player", "bunny.png");
     game.load.image("platform", "platform.png");
+    
     game.load.audio("coin", "coin1.wav");
     
     // load "tile-packed" sprite atlas
     game.load.atlasXML('jumper', 
-        'kenney/spritesheet_jumper.png', 'kenney/spritesheet_jumper.xml');
-    
-    // load tilemap created with "Tiled" editor
-    // source: http://phaser.io/examples/v2/tilemaps/mario
-    //game.load.tilemap('mario', 'assets/tilemaps/maps/super_mario.json', null, 
-    //    Phaser.Tilemap.TILED_JSON);
-    
-    // load fixed size spritesheet
-    //game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+        'kenney/spritesheet_jumper.png', 'kenney/spritesheet_jumper.xml');    
 }
 
 /* create the game world and entities */
@@ -45,9 +38,6 @@ function create() {
     // spawn enemies when clicking in game
     game.input.onDown.add(addEnemy, this);
     
-    // event listener for mobile devices
-    window.addEventListener("deviceorientation", updatePlayerGravity, true);
-
     addScore();
 }
 
@@ -86,26 +76,11 @@ function enemyContact(player : Phaser.Sprite, enemy : Phaser.Sprite) {
     coin.play();            
 }
 
-/* set player gravity based on mobile device orientation */    
-function updatePlayerGravity(orientation) {
-    // make sure we are getting valid orientation
-    if (orientation.gamma != null) {
-        var x = orientation.gamma / 90.0; // gamma is (-90, 90)
-        var y = orientation.beta / 90.0;  // beta is (-90, 90), when not upside-down
-        var mag = Math.sqrt(x*x + y*y);
-        var g = GRAVITY / mag;
-        player.body.gravity.set(x*g, y*g);
-    }
-}
-
 function addScore() {    
     scoreText = game.add.text(100, 20, "Score: 0", {
         fontSize: 30, 
         fill: 'red'
-        //font: 'bold 20pt Times New Roman'
     });
-    //scoreText.scale.setTo(2, 2);
-    //scoreText.angle = 20;
 }
 
 function addPlatform() {   
@@ -128,20 +103,6 @@ function addPlayer() {
     player.body.gravity.set(0, GRAVITY);
     player.body.drag.set(300); // drag == friction/air resistance
     player.body.bounce.set(0.8); // 80% bounce
-
-
-    // enable mouse interaction with sprite
-    player.inputEnabled = true;
-    
-    // make player draggable using the mouse
-    // note: drag doesn't work well with player gravity enabled
-    //player.input.enableDrag(true);
-
-    // kill player when clicked on
-    player.events.onInputDown.add(() => {
-        player.kill();
-        // play sound?
-    });
 }
 
 function addEnemy() {
@@ -157,9 +118,9 @@ function addEnemy() {
     enemy.body.bounce.set(0.8);
     enemy.body.drag.set(100);
     
-    // add frames 110-114 from spritesheet 'jumper' to animation
-    enemy.animations.add(
-        'flap', [110, 111, 112, 113, 114], 10 /*fps*/, true /*loop*/);
+    // add 5 sprites from spritesheet 'jumper' to animation
+    enemy.animations.add('flap', ['wingMan1.png', 'wingMan2.png', 'wingMan3.png', 
+        'wingMan4.png', 'wingMan5.png'], 10 /*fps*/, true /*loop*/);
     enemy.animations.play('flap');
 }
 

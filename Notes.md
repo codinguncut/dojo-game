@@ -1,3 +1,4 @@
+
 # Phaser Resources
 * http://phaser.io/tutorials/making-your-first-phaser-game
 * http://gamemechanicexplorer.com/
@@ -45,3 +46,42 @@
 * setup .settings/launch.json for web server
 * consider using "tsc --watch" in launch.json
 * set output directory for intermediate json files
+
+# Code Notes
+    // load tilemap created with "Tiled" editor
+    // source: http://phaser.io/examples/v2/tilemaps/mario
+    //game.load.tilemap('mario', 'assets/tilemaps/maps/super_mario.json', null, 
+    //    Phaser.Tilemap.TILED_JSON);
+    
+    // load fixed size spritesheet
+    //game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+
+    // event listener for mobile devices
+    window.addEventListener("deviceorientation", updatePlayerGravity, true);
+
+    /* set player gravity based on mobile device orientation */    
+    function updatePlayerGravity(orientation) {
+        // make sure we are getting valid orientation
+        if (orientation.gamma != null) {
+            var x = orientation.gamma / 90.0; // gamma is (-90, 90)
+            var y = orientation.beta / 90.0;  // beta is (-90, 90), when not upside-down
+            var mag = Math.sqrt(x*x + y*y);
+            var g = GRAVITY / mag;
+            player.body.gravity.set(x*g, y*g);
+        }
+    }
+
+    // make player draggable using the mouse
+    // note: drag doesn't work well with player gravity enabled
+    //player.input.enableDrag(true);
+
+    // enable mouse interaction with sprite
+    player.inputEnabled = true;
+    
+    // kill player when clicked on
+    player.events.onInputDown.add(() => {
+        player.kill();
+        // play sound?
+    });
+
+
