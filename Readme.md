@@ -1,7 +1,7 @@
 # About
 
 Game starter pack for Coder Dojo using the [Phaser](phaser.io) game engine. Phaser 
-engine supports all modern browser as well as mobile devices.
+engine supports all modern browsers as well as mobile devices.
 
 The starter pack allows children of all ages to build a physics-based game in 
 less than 100 lines of code.

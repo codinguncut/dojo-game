@@ -129,6 +129,7 @@ function enemyContact(player, enemy) {
     score += 1;
     scoreText.text = "Score: " + score;
     // play coin sound
+    // not working in cordova. consider https://github.com/katzer/cordova-plugin-local-notifications/issues/63
     var coin = game.add.audio("coin", 1 /*volume*/, false /*loop*/);
     coin.play();
 }
