@@ -5,6 +5,10 @@ html, body {
     height: 100%;
 }
 
+html {
+    margin-top: 1px; // for ios scroll fix
+}
+
 body {
     background-color: #ccc;
 }
