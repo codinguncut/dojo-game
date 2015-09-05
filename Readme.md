@@ -25,7 +25,6 @@ but for all practical purposes the game is written in Javascript.
 	* in "scripts" folder double-click "install dependencies.bat"
 * Serving
 	* in "scripts" folder double-click on "start web server.bat"
-	* minimize the terminal window
 * Editing
 	* launch Visual Studio Code (i.e. by clicking on "scripts\\VSCode" shortcut)
 		* on Windows this takes very long to load
