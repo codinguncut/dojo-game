@@ -28,6 +28,7 @@ var InitState = (function (_super) {
         sprites = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
         this.drawCoords();
         this.game.load.baseURL = "root/assets/";
+        this.game.stage.backgroundColor = '#444444';
         // start PlayState
         this.game.state.start("play", false /* clearWorld */);
     };

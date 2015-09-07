@@ -30,6 +30,7 @@ class InitState extends Phaser.State {
         
         this.game.load.baseURL = "root/assets/";
 
+        this.game.stage.backgroundColor = '#444444';
     
         // start PlayState
         this.game.state.start("play", false /* clearWorld */);
