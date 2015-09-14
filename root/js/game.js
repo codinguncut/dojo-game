@@ -13,21 +13,23 @@ var InitState = (function (_super) {
     }
     /* initialize the world and create initial elements */
     InitState.prototype.create = function () {
-        // enable game running when browser is not focussed
+        // continue running game when browser is not focussed
         this.game.stage.disableVisibilityChange = true;
-        // start arcade physics system 
+        // start arcade physics system (AABB)
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         // source: www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
         // myAsset.scale.setTo(scaleRatio, scaleRatio);
         var scaleRatio = 1 / window.devicePixelRatio;
+        // TODO: better scale mgmt.
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         this.scale.setUserScale(scaleRatio, scaleRatio);
         // create shorter cursor aliases
         cursors = game.input.keyboard.createCursorKeys();
-        // group for physics sprites
+        // group for physics-enabled sprites
         sprites = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
         this.drawCoords();
         this.game.load.baseURL = "root/assets/";
+        // gray background to show black text
         this.game.stage.backgroundColor = '#444444';
         // start PlayState
         this.game.state.start("play", false /* clearWorld */);
@@ -96,17 +98,21 @@ var InitState = (function (_super) {
 /// <reference path="lib/phaser.d.ts" />
 /// <reference path="Main.ts" />
 /// <reference path="InitState.ts" />
+var player;
 /* preload game assets before starting the game */
 function preload() {
     game.load.image("player", "bunny.png");
 }
 /* create the game world and entities */
 function create() {
-    var player = sprites.create(250, 50, 'player');
+    player = sprites.create(450, 50, 'player');
 }
 /* update step before each frame rendering */
 function update() {
     game.physics.arcade.collide(sprites, sprites);
+}
+/* useful for debugging */
+function render() {
 }
 /// <reference path="lib/phaser.d.ts" />
 /// <reference path="PlayState.ts" />
@@ -116,13 +122,14 @@ var Game = (function (_super) {
     function Game() {
         // source: see above (joshmorony.com)
         var width = window.innerWidth * window.devicePixelRatio, height = window.innerHeight * window.devicePixelRatio;
-        // Note: may need to set Phaser.CANVAS for mobile
-        _super.call(this, width, height, Phaser.CANVAS, 'game'); //AUTO);
+        _super.call(this, width, height, Phaser.CANVAS, 'game');
         this.state.add("init", new InitState());
+        // anonymous state object to prevent need for "this"
         var playState = {
             preload: preload,
             create: create,
-            update: update
+            update: update,
+            render: render
         };
         this.state.add("play", playState);
         this.state.start("init");

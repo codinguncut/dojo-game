@@ -7,15 +7,16 @@ class Game extends Phaser.Game {
         // source: see above (joshmorony.com)
         var width = window.innerWidth * window.devicePixelRatio,
             height = window.innerHeight * window.devicePixelRatio;
-        // Note: may need to set Phaser.CANVAS for mobile
-        super(width, height, Phaser.CANVAS, 'game'); //AUTO);
+        super(width, height, Phaser.CANVAS, 'game');
 
         this.state.add("init", new InitState());
         
+        // anonymous state object to prevent need for "this"
         var playState = {
             preload: preload,
             create: create,
-            update: update
+            update: update,
+            render: render
         }
 
         this.state.add("play", playState);

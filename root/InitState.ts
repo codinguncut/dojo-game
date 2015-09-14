@@ -7,29 +7,31 @@ class InitState extends Phaser.State {
     
     /* initialize the world and create initial elements */
     create() {
-        // enable game running when browser is not focussed
+        // continue running game when browser is not focussed
         this.game.stage.disableVisibilityChange = true;
         
-        // start arcade physics system 
+        // start arcade physics system (AABB)
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // source: www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
         // myAsset.scale.setTo(scaleRatio, scaleRatio);
         var scaleRatio = 1 / window.devicePixelRatio;
 
+        // TODO: better scale mgmt.
         this.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         this.scale.setUserScale(scaleRatio, scaleRatio);
         
         // create shorter cursor aliases
         cursors = game.input.keyboard.createCursorKeys();
         
-        // group for physics sprites
+        // group for physics-enabled sprites
         sprites = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
 
         this.drawCoords();
         
         this.game.load.baseURL = "root/assets/";
 
+        // gray background to show black text
         this.game.stage.backgroundColor = '#444444';
     
         // start PlayState
