@@ -29,6 +29,7 @@ but for all practical purposes the game is written in Javascript.
 	* launch Visual Studio Code (i.e. by clicking on "scripts\\VSCode" shortcut)
 		* on Windows this takes very long to load
 	* drag project folder to Visual Studio Code
+    * open "PlayState.ts" file in "root" folder
 	* Run "build task" once (Ctrl-Shift-B)
 		* you will see a little spinner in the bottom left corner
 		* From then on build task will run automatically with each "Save" 
