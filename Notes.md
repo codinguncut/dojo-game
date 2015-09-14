@@ -27,11 +27,11 @@
 * http://www.leshylabs.com/apps/sstool/
 * http://renderhjs.net/shoebox/ (have to tweak output for Phaser)
 * https://spritesheetpacker.codeplex.com/
+* http://darkfunction.com/editor/
 
 # Create own sprites
 * http://piq.codeus.net/
 * http://www.piskelapp.com/ (save as png)
-* http://darkfunction.com/editor/
 
 # Level Editing
 * [Tiled](http://www.mapeditor.org/)
