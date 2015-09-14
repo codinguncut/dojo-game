@@ -11,7 +11,7 @@ function preload() {
 
 /* create the game world and entities */
 function create() {
-    player = sprites.create(450, 50, 'player');
+    player = sprites.create(450, 50, "player");
 }
 
 /* update step before each frame rendering */

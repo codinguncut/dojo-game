@@ -31,7 +31,7 @@
 # Create own sprites
 * http://piq.codeus.net/
 * http://www.piskelapp.com/ (save as png)
-* http://pyxeledit.com/
+* http://darkfunction.com/editor/
 
 # Level Editing
 * [Tiled](http://www.mapeditor.org/)
